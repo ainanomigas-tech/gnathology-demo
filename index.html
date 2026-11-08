@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Гнатология Артикула</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500&family=Golos+Text:wght@400;500;600&display=swap">
+<style>
+/* Layout: split hero with the joint curtain as the thesis, then quiet pearl sections and one olive booking band */
+:root {
+  --bg: #F5F0E8; --surface: #FFFCF7; --line: #E4DBCC; --ink: #2A2A23; --muted: #6A655A;
+  --olive: #474C36; --on-olive: #FBF8F1; --gold: #9C7A45; --pain: #D24E36;
+  --band: #474C36; --on-band: #F8F4EB; --on-band-muted: #D5D3C2;
+  --tint-problem: #F6E3D9; --tint-solution: #E7EADA; --bone: #FFFDF9; --jaw: #EADFCB; --bone-line: #C9BDA8;
+  --disc-ok: #7F8A5C; --shadow: 0 18px 40px -26px rgba(74, 62, 40, .45);
+  --display: "Geologica", "Segoe UI", system-ui, sans-serif;
+  --body: "Golos Text", "Segoe UI", system-ui, sans-serif;
+  --r: 22px;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #181914; --surface: #23241D; --line: #3A3B30; --ink: #F1ECE1; --muted: #B1AC9C;
+  --olive: #B4BC8C; --on-olive: #1C1E13; --gold: #D0AE76; --pain: #F27A60;
+  --band: #2F3325; --on-band: #F6F2E8; --on-band-muted: #C8C6B4;
+  --tint-problem: #3A2620; --tint-solution: #2A2E21; --bone: #D9D2C3; --jaw: #ADA48F; --bone-line: #8E8775;
+  --disc-ok: #A3AE78; --shadow: 0 18px 40px -26px rgba(0, 0, 0, .8);
+  color-scheme: dark;
+} }
+:root[data-theme="dark"] {
+  --bg: #181914; --surface: #23241D; --line: #3A3B30; --ink: #F1ECE1; --muted: #B1AC9C;
+  --olive: #B4BC8C; --on-olive: #1C1E13; --gold: #D0AE76; --pain: #F27A60;
+  --band: #2F3325; --on-band: #F6F2E8; --on-band-muted: #C8C6B4;
+  --tint-problem: #3A2620; --tint-solution: #2A2E21; --bone: #D9D2C3; --jaw: #ADA48F; --bone-line: #8E8775;
+  --disc-ok: #A3AE78; --shadow: 0 18px 40px -26px rgba(0, 0, 0, .8);
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+.a-jaw { fill: var(--jaw); stroke: var(--bone-line); stroke-width: 2.5; }
+.sym b { font: 500 19px/1.3 var(--display); }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.55 var(--body); }
+h1, h2, h3, p, ol, ul { margin: 0; padding: 0; }
+ol, ul { list-style: none; }
+h1, h2 { font-family: var(--display); font-weight: 300; letter-spacing: -.02em; line-height: 1.12; text-wrap: balance; }
+h1 { font-size: clamp(36px, 5.2vw, 62px); }
+h2 { font-size: clamp(28px, 3.5vw, 42px); }
+h3 { font: 500 19px/1.3 var(--display); }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.wrap { max-width: 1240px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 48px); }
+section { padding-block: clamp(56px, 8vw, 104px); scroll-margin-top: 72px; }
+.lead { color: var(--muted); max-width: 58ch; }
+.head { display: grid; gap: 14px; margin-bottom: clamp(28px, 4vw, 48px); }
+
+.demo-note { background: var(--band); color: var(--on-band); font-size: 14px; text-align: center; padding: 8px 16px; }
+
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: color-mix(in srgb, var(--bg) 86%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 68px; }
+.logo { font: 400 21px/1 var(--display); letter-spacing: .24em; text-decoration: none; }
+.top nav { display: flex; gap: 28px; font-size: 15px; }
+.top nav a { text-decoration: none; color: var(--muted); transition: color .2s; }
+.top nav a:hover { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 52px; padding: 0 28px; border: 0; border-radius: 999px; background: var(--olive); color: var(--on-olive); font: 500 16px/1 var(--body); text-decoration: none; cursor: pointer; transition: transform .25s, box-shadow .25s; }
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.btn i { font-style: normal; transition: transform .25s; }
+.btn:hover i { transform: translateX(4px); }
+.btn.small { min-height: 44px; padding: 0 20px; font-size: 15px; }
+.btn.light { background: var(--on-band); color: #2A2A23; width: 100%; }
+
+.hero { padding-block: clamp(32px, 5vw, 64px) clamp(48px, 6vw, 80px); }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+.hero-text { display: grid; gap: 24px; justify-items: start; min-width: 0; }
+.tag { border: 1px solid var(--line); border-radius: 999px; padding: 5px 14px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.hero h1 span { color: var(--muted); }
+.offer { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
+.price-inline { font-size: 15px; color: var(--muted); line-height: 1.3; }
+.price-inline b { display: block; font: 400 28px/1.2 var(--display); color: var(--ink); }
+
+.stage { --pos: 50%; position: relative; aspect-ratio: 1; width: 100%; max-width: 100%; border-radius: 28px; overflow: hidden; box-shadow: var(--shadow); cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.layer { position: absolute; inset: 0; }
+.layer svg { display: block; width: 100%; height: 100%; }
+.layer.problem { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+.pill { position: absolute; padding: 6px 14px; border-radius: 999px; background: var(--surface); font-size: 14px; font-weight: 500; line-height: 1.3; }
+.pill.name-l { left: 14px; top: 14px; color: var(--pain); }
+.pill.name-r { right: 14px; top: 14px; color: var(--disc-ok); }
+.reading { position: absolute; bottom: 14px; display: grid; padding: 8px 14px; border-radius: 16px; background: var(--surface); font-size: 13px; line-height: 1.25; color: var(--muted); }
+.reading b { font: 400 clamp(20px, 2.4vw, 26px)/1.15 var(--display); color: var(--ink); font-variant-numeric: tabular-nums; }
+.reading.l { left: 14px; } .reading.r { right: 14px; text-align: right; }
+.divider { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: var(--surface); }
+.grip { position: absolute; top: 50%; left: 50%; width: 52px; height: 52px; margin: -26px 0 0 -26px; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--surface); color: var(--ink); font-size: 18px; letter-spacing: 2px; box-shadow: var(--shadow); cursor: ew-resize; transition: transform .2s; }
+.stage:hover .grip { transform: scale(1.08); }
+.stage-note { margin-top: 12px; font-size: 14px; color: var(--muted); }
+svg text { font-family: var(--body); font-size: 21px; fill: var(--ink); }
+.a-bone { fill: var(--bone); stroke: var(--bone-line); stroke-width: 2.5; }
+.a-disc-ok { fill: var(--disc-ok); }
+.a-disc-bad { fill: var(--pain); }
+.a-lead { stroke: var(--ink); stroke-width: 1.5; fill: none; opacity: .55; }
+.a-tint-p { fill: var(--tint-problem); } .a-tint-s { fill: var(--tint-solution); }
+.a-arc { stroke: var(--pain); stroke-width: 4; fill: none; stroke-linecap: round; }
+.a-glow { fill: var(--pain); transform-origin: 268px 262px; animation: pulse 2.4s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: .16; transform: scale(.92); } 50% { opacity: .34; transform: scale(1.1); } }
+
+.checks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.sym { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 4px 14px; width: 100%; height: 100%; padding: 22px; text-align: left; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); color: var(--ink); font: inherit; cursor: pointer; transition: transform .25s, box-shadow .25s, border-color .25s; }
+.sym:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.sym .box { grid-row: span 2; width: 26px; height: 26px; border: 1.5px solid var(--bone-line); border-radius: 50%; display: grid; place-items: center; color: transparent; font-size: 14px; transition: background .2s, color .2s, border-color .2s; }
+.sym small { color: var(--muted); font-size: 15px; line-height: 1.4; }
+.sym[aria-pressed="true"] { border-color: var(--olive); }
+.sym[aria-pressed="true"] .box { background: var(--olive); border-color: var(--olive); color: var(--on-olive); }
+.tally { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; margin-top: 24px; padding-block: 20px; border-top: 1px solid var(--line); }
+.tally p { max-width: 62ch; min-width: 0; flex: 1 1 320px; }
+
+.visit { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 72px); align-items: start; }
+.ticket { display: grid; gap: 18px; padding: clamp(24px, 3vw, 40px); border-radius: 28px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); }
+.ticket .sum { font: 300 clamp(52px, 7vw, 84px)/1 var(--display); letter-spacing: -.03em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ticket p { color: var(--muted); font-size: 15px; }
+.steps { display: grid; }
+.steps li { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 4px 16px; padding-block: 22px; border-top: 1px solid var(--line); }
+.steps li:last-child { border-bottom: 1px solid var(--line); }
+.steps .n { grid-row: span 2; font: 300 30px/1.1 var(--display); color: var(--gold); font-variant-numeric: tabular-nums; }
+.steps p { color: var(--muted); font-size: 16px; }
+
+.doc { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
+.portrait { position: relative; aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden; background: var(--tint-solution); }
+.portrait svg { display: block; width: 100%; height: 100%; }
+.portrait span { position: absolute; left: 14px; bottom: 14px; padding: 6px 14px; border-radius: 999px; background: var(--surface); color: var(--muted); font-size: 14px; }
+.doc-text { display: grid; gap: 18px; min-width: 0; }
+.doc-text .role { color: var(--muted); }
+.facts { display: grid; gap: 12px; }
+.facts li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; }
+.facts li::before { content: "✓"; color: var(--gold); }
+
+.faq { display: grid; max-width: 860px; }
+.faq details { border-top: 1px solid var(--line); }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { display: flex; justify-content: space-between; gap: 24px; padding-block: 20px; font: 400 19px/1.35 var(--display); cursor: pointer; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--gold); font-size: 24px; line-height: 1; transition: transform .25s; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq p { padding-bottom: 22px; color: var(--muted); max-width: 66ch; }
+
+.book-sec { padding-top: 0; }
+.band { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); padding: clamp(24px, 5vw, 64px); border-radius: 32px; background: var(--band); color: var(--on-band); }
+.band-text { display: grid; gap: 20px; align-content: start; min-width: 0; }
+.band-text p { color: var(--on-band-muted); }
+.contacts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 24px; margin-top: 8px; font-size: 15px; }
+.contacts dt { color: var(--on-band-muted); font-size: 13px; }
+.contacts dd { margin: 2px 0 0; }
+dl { margin: 0; }
+form { display: grid; gap: 14px; min-width: 0; align-content: start; }
+.field { display: grid; gap: 6px; }
+.field label { font-size: 14px; color: var(--on-band-muted); }
+.field input { width: 100%; min-height: 54px; padding: 0 20px; border: 1px solid transparent; border-radius: 16px; background: var(--surface); color: var(--ink); font: 400 17px var(--body); }
+.err { min-height: 18px; font-size: 13px; color: #FFD3C6; }
+.field input[aria-invalid="true"] { border-color: #FFB4A0; }
+.agree { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; font-size: 14px; color: var(--on-band-muted); cursor: pointer; }
+.agree input { width: 20px; height: 20px; margin: 1px 0 0; accent-color: var(--gold); }
+.picked { font-size: 14px; color: var(--on-band-muted); }
+.done { display: grid; gap: 12px; align-content: center; padding: 28px; border-radius: 20px; background: var(--surface); color: var(--ink); }
+.done h3 { font-size: 24px; font-weight: 400; }
+.done p { color: var(--muted); }
+.link-btn { justify-self: start; padding: 0; border: 0; background: none; color: var(--ink); font: inherit; text-decoration: underline; cursor: pointer; }
+
+footer { padding-block: 0 40px; font-size: 14px; color: var(--muted); }
+footer .warn { font: 400 clamp(17px, 2.2vw, 24px)/1.3 var(--display); color: var(--ink); text-transform: uppercase; letter-spacing: .03em; padding-block: 24px; border-block: 1px solid var(--line); margin-bottom: 18px; text-wrap: balance; }
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .rise { animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 40%; }
+    @keyframes rise { from { opacity: .25; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .a-glow { animation: none; opacity: .25; }
+  .btn, .sym, .grip { transition: none; }
+}
+@media (max-width: 980px) {
+  .top nav { display: none; }
+  .hero .wrap, .visit, .doc, .band { grid-template-columns: minmax(0, 1fr); }
+  .checks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .portrait { max-width: 380px; }
+}
+@media (max-width: 620px) {
+  body { font-size: 16px; }
+  .checks, .contacts { grid-template-columns: minmax(0, 1fr); }
+  .offer .btn, .tally .btn { width: 100%; }
+  .pill { font-size: 13px; padding: 5px 11px; }
+  .reading { font-size: 12px; padding: 6px 10px; }
+  .steps li { grid-template-columns: 42px minmax(0, 1fr); }
+  .band { border-radius: 24px; }
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="bone" class="a-bone" d="M0-4H640V190C560 200 520 215 470 250 440 275 400 270 370 235 340 195 270 170 215 190 175 205 150 240 130 250 90 265 40 250 0 255Z"/>
+    <path id="jaw" class="a-jaw" d="M225 300C215 250 255 222 295 222 340 222 372 255 362 300 356 335 338 360 340 420 342 490 380 560 470 644H140C190 560 225 480 232 410 236 360 232 330 225 300Z"/>
+    <path id="disc" d="M222 232C240 195 270 186 298 187 330 188 358 205 372 236 364 248 356 244 350 238 335 222 318 213 296 212 272 212 252 222 240 238 232 246 222 242 222 232Z"/>
+  </defs>
+</svg>
+
+<p class="demo-note">Демо-проект. Клиника, врач и контакты вымышлены, заявки никуда не отправляются.</p>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#first" aria-label="Артикула, на начало страницы">АРТИКУЛА</a>
+    <nav aria-label="Разделы">
+      <a href="#symptoms">Симптомы</a>
+      <a href="#visit">О приёме</a>
+      <a href="#doctor">Врач</a>
+      <a href="#questions">Вопросы</a>
+      <a href="#book">Контакты</a>
+    </nav>
+    <a class="btn small" href="#book" data-goal="cta_header">Записаться</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="first">
+    <div class="wrap">
+      <div class="hero-text">
+        <span class="tag">Гнатология</span>
+        <h1>Щёлкает челюсть? Болит при жевании? <span>Причина может быть в суставе.</span></h1>
+        <p class="lead">Гнатолог проверяет, как работают суставы, мышцы и прикус вместе, и находит источник боли и щелчков.</p>
+        <div class="offer">
+          <a class="btn" href="#book" data-goal="cta_hero">Записаться на приём <i aria-hidden="true">→</i></a>
+          <p class="price-inline">Первичный приём<b>2 000 ₽</b></p>
+        </div>
+      </div>
+
+      <div>
+        <div class="stage" id="stage">
+          <div class="layer">
+            <svg viewBox="0 0 640 640" aria-hidden="true">
+              <rect class="a-tint-s" width="640" height="640"/>
+              <g transform="translate(640 0) scale(-1 1)">
+                <use href="#bone"/><use href="#jaw"/><use href="#disc" class="a-disc-ok"/>
+              </g>
+              <path class="a-lead" d="M510 330 420 232"/>
+              <text x="612" y="358" text-anchor="end">Диск на месте</text>
+            </svg>
+            <span class="pill name-r">Решение</span>
+            <div class="reading r"><b>42 мм</b>открывание рта</div>
+          </div>
+          <div class="layer problem">
+            <svg viewBox="0 0 640 640" aria-hidden="true">
+              <rect class="a-tint-p" width="640" height="640"/>
+              <g transform="translate(640 0) scale(-1 1)">
+                <use href="#bone"/>
+                <g transform="translate(-14 18) rotate(-3 295 300)"><use href="#jaw"/></g>
+                <g transform="translate(66 34) rotate(18 298 215)"><use href="#disc" class="a-disc-bad"/></g>
+              </g>
+              <circle class="a-glow" cx="268" cy="262" r="96"/>
+              <path class="a-arc" d="M176 214a100 100 0 0 0-12 62M150 196a132 132 0 0 0-16 92"/>
+              <path class="a-lead" d="M128 330 222 266"/>
+              <text x="28" y="358">Диск смещён</text>
+            </svg>
+            <span class="pill name-l">Проблема</span>
+            <div class="reading l"><b>31 мм</b>открывание рта</div>
+          </div>
+          <div class="divider" id="divider">
+            <button class="grip" id="grip" type="button" role="slider" aria-label="Сравнение: проблема и решение" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="Поровну проблема и решение">‹›</button>
+          </div>
+        </div>
+        <p class="stage-note">Схема сустава в разрезе, значения условные. Потяните ползунок.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="symptoms">
+    <div class="wrap">
+      <div class="head rise">
+        <h2>Отметьте, что беспокоит вас</h2>
+        <p class="lead">Эти признаки бывают связаны с работой височно-нижнечелюстного сустава. Диагноз ставит только врач на приёме.</p>
+      </div>
+      <ul class="checks">
+        <li class="rise"><button class="sym" type="button" aria-pressed="false"><span class="box" aria-hidden="true">✓</span><b>Щелчки в челюсти</b><small>При зевании, еде или разговоре</small></button></li>
+        <li class="rise"><button class="sym" type="button" aria-pressed="false"><span class="box" aria-hidden="true">✓</span><b>Боль при жевании</b><small>Возле уха, в щеке или виске</small></button></li>
+        <li class="rise"><button class="sym" type="button" aria-pressed="false"><span class="box" aria-hidden="true">✓</span><b>Трудно открыть рот</b><small>Челюсть заклинивает или уходит в сторону</small></button></li>
+        <li class="rise"><button class="sym" type="button" aria-pressed="false"><span class="box" aria-hidden="true">✓</span><b>Напряжение мышц</b><small>Устают лицо, шея и плечи</small></button></li>
+        <li class="rise"><button class="sym" type="button" aria-pressed="false"><span class="box" aria-hidden="true">✓</span><b>Скрежет зубами</b><small>Ночью или в стрессе, стираются зубы</small></button></li>
+        <li class="rise"><button class="sym" type="button" aria-pressed="false"><span class="box" aria-hidden="true">✓</span><b>Головные боли по утрам</b><small>Чаще в висках, вместе с усталостью</small></button></li>
+      </ul>
+      <div class="tally">
+        <p id="tally" aria-live="polite">Выберите один или несколько пунктов, и мы передадим их врачу вместе с заявкой.</p>
+        <a class="btn" href="#book" data-goal="cta_symptoms">Показать врачу <i aria-hidden="true">→</i></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit">
+    <div class="wrap">
+      <div class="head rise">
+        <h2>Что входит в первичный приём</h2>
+        <p class="lead">За один визит вы узнаёте, что происходит с суставом, и получаете план действий.</p>
+      </div>
+      <div class="visit">
+        <div class="ticket rise">
+          <p>Стоимость приёма</p>
+          <div class="sum">2 000 ₽</div>
+          <p>Длительность около 60 минут. Снимок КЛКТ назначается по показаниям и оплачивается отдельно.</p>
+          <a class="btn" href="#book" data-goal="cta_visit">Записаться <i aria-hidden="true">→</i></a>
+        </div>
+        <ol class="steps">
+          <li class="rise"><span class="n" aria-hidden="true">1</span><h3>Беседа</h3><p>Врач расспрашивает о жалобах, привычках, травмах и прошлом лечении.</p></li>
+          <li class="rise"><span class="n" aria-hidden="true">2</span><h3>Осмотр сустава и мышц</h3><p>Пальпация жевательных мышц, проверка щелчков и амплитуды открывания рта в миллиметрах.</p></li>
+          <li class="rise"><span class="n" aria-hidden="true">3</span><h3>Анализ прикуса</h3><p>Оценка контактов зубов и того, как смыкается челюсть.</p></li>
+          <li class="rise"><span class="n" aria-hidden="true">4</span><h3>План лечения</h3><p>Вы получаете предварительное заключение, список нужных исследований и варианты лечения со стоимостью.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="doctor">
+    <div class="wrap doc">
+      <div class="portrait rise">
+        <svg viewBox="0 0 400 500" aria-hidden="true">
+          <circle class="a-bone" cx="200" cy="190" r="86"/>
+          <path class="a-bone" d="M60 504c0-120 60-190 140-190s140 70 140 190Z"/>
+        </svg>
+        <span>Здесь будет фотография врача</span>
+      </div>
+      <div class="doc-text rise">
+        <span class="tag" style="justify-self:start">Ваш гнатолог</span>
+        <h2>Марина Лесникова</h2>
+        <p class="role">Врач-ортопед, гнатолог. Вымышленный специалист для демонстрации блока.</p>
+        <ul class="facts">
+          <li>12 лет работает с дисфункцией височно-нижнечелюстного сустава</li>
+          <li>Ведёт пациентов вместе с ортодонтом и остеопатом</li>
+          <li>Объясняет диагноз на снимках и моделях, без сложных терминов</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="questions">
+    <div class="wrap">
+      <div class="head rise"><h2>Частые вопросы</h2></div>
+      <div class="faq rise">
+        <details><summary>Кому нужен приём гнатолога?</summary><p>Тем, у кого щёлкает или болит челюсть, стираются зубы, есть напряжение в мышцах лица или боль возле уха без проблем с ушами.</p></details>
+        <details><summary>Сколько длится приём?</summary><p>Около 60 минут. Этого хватает на беседу, осмотр, анализ прикуса и обсуждение плана.</p></details>
+        <details><summary>Какие исследования могут понадобиться?</summary><p>Чаще всего КЛКТ или МРТ сустава и цифровой анализ прикуса. Врач назначит только те, которые нужны в вашем случае.</p></details>
+        <details><summary>Надо ли готовиться к приёму?</summary><p>Специальной подготовки нет. Возьмите с собой снимки и заключения других врачей, если они есть.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="book-sec" id="book">
+    <div class="wrap">
+      <div class="band">
+        <div class="band-text">
+          <h2>Запишитесь на приём гнатолога</h2>
+          <p>Оставьте телефон. Администратор перезвонит и подберёт удобное время.</p>
+          <dl class="contacts">
+            <div><dt>Адрес</dt><dd>Москва, ул. Примерная, 1</dd></div>
+            <div><dt>Телефон</dt><dd data-goal="phone_click">+7 (000) 000-00-00</dd></div>
+            <div><dt>Часы работы</dt><dd>Ежедневно, 9:00–21:00</dd></div>
+            <div><dt>Первичный приём</dt><dd>2 000 ₽</dd></div>
+          </dl>
+        </div>
+        <form id="form" novalidate>
+          <div class="field">
+            <label for="name">Ваше имя</label>
+            <input id="name" name="name" autocomplete="name" aria-describedby="name-err">
+            <div class="err" id="name-err"></div>
+          </div>
+          <div class="field">
+            <label for="phone">Телефон</label>
+            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" aria-describedby="phone-err">
+            <div class="err" id="phone-err"></div>
+          </div>
+          <p class="picked" id="picked" hidden></p>
+          <label class="agree" for="consent"><input id="consent" type="checkbox" aria-describedby="consent-err"><span>Согласен на обработку персональных данных</span></label>
+          <div class="err" id="consent-err"></div>
+          <button class="btn light" type="submit">Записаться на приём <i aria-hidden="true">→</i></button>
+        </form>
+        <div class="done" id="done" hidden tabindex="-1">
+          <h3>Заявка заполнена верно</h3>
+          <p>На рабочем сайте она ушла бы администратору, а в Метрике сработала бы цель. В этой демо-версии данные никуда не отправлены.</p>
+          <button class="link-btn" id="again" type="button">Заполнить ещё раз</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="warn">Имеются противопоказания. Необходима консультация специалиста.</p>
+    <p>Артикула — вымышленная клиника. На рабочем сайте здесь указываются юридическое лицо и номер медицинской лицензии.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var COUNTER_ID = null; // номер счётчика Яндекс Метрики на рабочем сайте
+  function goal(name) { if (COUNTER_ID && window.ym) window.ym(COUNTER_ID, 'reachGoal', name); }
+  document.querySelectorAll('[data-goal]').forEach(function (el) {
+    el.addEventListener('click', function () { goal(el.dataset.goal); });
+  });
+
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var stage = document.getElementById('stage');
+  var grip = document.getElementById('grip');
+  var target = 50, cur = 50, raf = 0, touched = false;
+
+  function paint(p) {
+    stage.style.setProperty('--pos', p.toFixed(2) + '%');
+    var v = Math.round(p);
+    grip.setAttribute('aria-valuenow', v);
+    grip.setAttribute('aria-valuetext', 'Проблема ' + v + ' процентов, решение ' + (100 - v) + ' процентов');
+  }
+  function tick() {
+    cur += (target - cur) * 0.2;
+    if (Math.abs(target - cur) < 0.05) { cur = target; paint(cur); raf = 0; return; }
+    paint(cur);
+    raf = requestAnimationFrame(tick);
+  }
+  function moveTo(p) {
+    target = Math.min(100, Math.max(0, p));
+    if (reduce) { cur = target; paint(cur); return; }
+    if (!raf) raf = requestAnimationFrame(tick);
+  }
+  function fromEvent(e) {
+    var r = stage.getBoundingClientRect();
+    moveTo((e.clientX - r.left) / r.width * 100);
+  }
+  stage.addEventListener('pointerdown', function (e) {
+    touched = true;
+    stage.setPointerCapture(e.pointerId);
+    fromEvent(e);
+    goal('slider_used');
+  });
+  stage.addEventListener('pointermove', function (e) {
+    if (stage.hasPointerCapture(e.pointerId)) fromEvent(e);
+  });
+  grip.addEventListener('keydown', function (e) {
+    var map = { ArrowLeft: target - 5, ArrowDown: target - 5, ArrowRight: target + 5, ArrowUp: target + 5, Home: 0, End: 100 };
+    if (e.key in map) { e.preventDefault(); touched = true; moveTo(map[e.key]); }
+  });
+  if (!reduce) {
+    setTimeout(function () { if (!touched) moveTo(64); }, 900);
+    setTimeout(function () { if (!touched) moveTo(50); }, 1900);
+  }
+
+  var syms = Array.prototype.slice.call(document.querySelectorAll('.sym'));
+  var tally = document.getElementById('tally');
+  var picked = document.getElementById('picked');
+  var tallyDefault = tally.textContent;
+  function chosen() {
+    return syms.filter(function (b) { return b.getAttribute('aria-pressed') === 'true'; })
+      .map(function (b) { return b.querySelector("b").textContent; });
+  }
+  syms.forEach(function (b) {
+    b.addEventListener('click', function () {
+      b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+      var list = chosen();
+      tally.textContent = list.length
+        ? 'Отмечено ' + list.length + ' из ' + syms.length + '. Список попадёт в заявку, и врач увидит его до приёма.'
+        : tallyDefault;
+      picked.hidden = !list.length;
+      picked.textContent = 'Отмечено: ' + list.join(', ').toLowerCase();
+    });
+  });
+
+  var form = document.getElementById('form');
+  var done = document.getElementById('done');
+  var name = document.getElementById('name');
+  var phone = document.getElementById('phone');
+  var consent = document.getElementById('consent');
+
+  function digits() {
+    var d = phone.value.replace(/\D/g, '');
+    if (d[0] === '8' || d[0] === '7') d = d.slice(1);
+    return d.slice(0, 10);
+  }
+  phone.addEventListener('input', function () {
+    var d = digits();
+    if (!d) { phone.value = ''; return; }
+    var v = '+7 (' + d.slice(0, 3);
+    if (d.length > 3) v += ') ' + d.slice(3, 6);
+    if (d.length > 6) v += '-' + d.slice(6, 8);
+    if (d.length > 8) v += '-' + d.slice(8, 10);
+    phone.value = v;
+  });
+  function mark(el, msg) {
+    document.getElementById(el.id + '-err').textContent = msg;
+    el.setAttribute('aria-invalid', msg ? 'true' : 'false');
+    return !msg;
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var a = mark(name, name.value.trim() ? '' : 'Напишите, как к вам обращаться');
+    var b = mark(phone, digits().length === 10 ? '' : 'Введите номер полностью, 10 цифр после +7');
+    var c = mark(consent, consent.checked ? '' : 'Без согласия мы не сможем принять заявку');
+    if (!(a && b && c)) {
+      (!a ? name : !b ? phone : consent).focus();
+      return;
+    }
+    goal('form_submit');
+    form.hidden = true;
+    done.hidden = false;
+    done.focus();
+  });
+  document.getElementById('again').addEventListener('click', function () {
+    form.reset();
+    done.hidden = true;
+    form.hidden = false;
+    name.focus();
+  });
+})();
+</script>
+</html>
